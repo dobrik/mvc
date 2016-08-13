@@ -6,6 +6,9 @@ class View
 
     public function render($view, $data = [])
     {
+        if (is_array($data)) {
+            extract($data);
+        }
         $viewPath = 'app/views/';
         if (is_null($this->template)) {
             if (file_exists($viewPath . $view . '.php')) {

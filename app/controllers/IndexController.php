@@ -4,6 +4,7 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        $this->view->render('index');
+        $products = new Products();
+        $this->view->render('index', ['products' => $products->getProducts()]);
     }
 }
