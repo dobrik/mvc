@@ -13,13 +13,6 @@ class Route
         if (!empty($routes[2])) {
             $Action = $routes[2];
         }
-        spl_autoload_register(
-            function ($models) {
-                if (file_exists('app/models/' . $models . '.php')) {
-                    include_once 'app/models/' . $models . '.php';
-                }
-            }
-        );
         $Controller = ucfirst(strtolower($Controller)) . 'Controller';
         $Action = strtolower($Action) . 'Action';
         $controllerPath = 'app/controllers/' . $Controller . '.php';
