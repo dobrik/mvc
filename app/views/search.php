@@ -49,7 +49,7 @@
             <div class="col-md-3 title">
                 <h3>Categories</h3></div>
             <div class="col-md-9 title">
-                <h3>Featured products</h3></div>
+                <h3>Search result</h3></div>
         </div>
     </div>
     <div class="container-fluid">
@@ -57,39 +57,30 @@
             <div class="col-md-3 title">
                 <div class="btn-group-vertical">
                     <?php foreach ($categories as $category) { ?>
-                        <a href="/catalog/showproducts/<?php echo $category['url'] ?>"
+                        <a href="/category/<?php echo $category['url'] ?>"
                            class="btn btn-default"><?php echo $category['category'] ?></a>
                     <?php } ?>
                 </div>
             </div>
             <div class="col-md-9">
-                <?php for ($i = 0; $i < count($popularProducts); $i++) {
-                    if (($i + 3) % 3 == 0) { ?>
+            <?php var_dump($result) ?>
+                <?php if(!empty($result)){
+                    foreach ($result as $item) {?>
                         <div class="row">
-                    <?php } ?>
-                    <div class="col-md-4 pull-down">
-                        <div class="product_mini grey_border">
-                            <div class="product_img">
-                                <img src="<?php echo $popularProducts[$i]['preview'] ?>"
-                                     title="<?php echo $popularProducts[$i]['description'] ?>">
-                            </div>
-                            <div class="product_mini_desc">
-                                <h4><a href="#"><?php echo $popularProducts[$i]['product'] ?></a></h4>
-                                <p><?php echo $popularProducts[$i]['content'] ?></p>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default cart_button"
-                                            id="prod_price"><?php echo $popularProducts[$i]['price'] ?></button>
-                                    <button type="button" class="btn btn-default"><span
-                                            class="glyphicon glyphicon-shopping-cart"></span> Buy
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="col-md-5"><img class="img_search_result" src="<?php $item['preview'] ?>" alt=""></div>
+                        <div class="col-md-7">
+                            <table class="table table-responsive search-table">
+                                <tr><td>Name: <span class="pull-right">s</span></td></tr>
+                                <tr><td>Description: <span class="pull-right">s</span></td></tr>
+                                <tr><td>Price: <span class="pull-right">s</span></tr>
+                                <tr><td>Availability: <span class="pull-right">s</span></td></tr>
+                            </table>
                         </div>
                     </div>
-                    <?php if (($i + 4) % 3 == 0) { ?>
-                        </div>
-                    <?php }
-                } ?>
+           <?php }
+                }else{?>
+                    <h3>Ничего не найдено <i class="fa fa-frown-o"></i></h3>
+                <?php } ?>
             </div>
         </div>
     </div>

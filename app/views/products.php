@@ -20,12 +20,14 @@
 <div class="container content">
     <div class="special_offer container-fluid">
         <?php if (!empty($slider)) { ?>
-            <div id="carousel_on_main" class="carousel slide" data-ride="carousel">
+            <div class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <?php
                     foreach ($slider as $num => $slide) { ?>
                         <div class="item <? echo ($num == 0) ? 'active' : '' ?>">
-                            <img src="<?php echo $slide['image'] ?>" alt="<?php echo $slide['title'] ?>">
+                            <a href="">
+                                <img src="<?php echo $slide['image'] ?>" alt="<?php echo $slide['title'] ?>">
+                            </a>
                         </div>
                     <?php } ?>
 
@@ -66,7 +68,7 @@
                         <div class="col-md-4 pull-down">
                             <div class="product_mini grey_border">
                                 <div class="product_img">
-                                    <img src="/content/images/<?php echo $products[$i]['preview'] ?>"
+                                    <img src="<?php echo $products[$i]['preview'] ?>"
                                          title="<?php echo $products[$i]['description'] ?>">
                                 </div>
                                 <div class="product_mini_desc">

@@ -102,11 +102,11 @@ body {
 }
 
 .arrow_bg_shadow:hover,
-div#carousel_on_main>.arrow_bg_shadow {
+div.carousel>.arrow_bg_shadow {
     background-image: none;
     width: 8%;
 }
-#carousel_on_main{
+.carousel{
     background-color: #F1F1F1;
 }
 
@@ -191,7 +191,7 @@ ul.dropdown-menu{
     padding: 10px 15px;
     background-color: #F5F5F5;
 }
-.carousel-inner>.item>img{
+.carousel-inner>.item>a>img{
     margin: auto;
 }
 .footer{
@@ -205,4 +205,10 @@ ul.dropdown-menu{
 .footer>ul{
     display: inline-block;
     list-style-type: none;
+}
+.img_search_result{
+    max-width: 300px;
+}
+.search-table span{
+    color:red;
 }
