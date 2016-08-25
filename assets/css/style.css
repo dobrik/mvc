@@ -7,15 +7,21 @@
     font-family: mimity_und;
     src: url('../fonts/sourcesanspro-regular-webfont.ttf');
 }
-
+.logo-main,.logo-main:hover{
+    text-decoration: none;
+}
+.logo1, .logo1~p{
+    color: black;
+}
 .logo1,
 .logo1+span {
-    font-family: mimity;
-    font-size: 35px;
+    font-family: mimity !important;
+    font-size: 35px !important;
 }
 
+
 .logo1+span {
-    color: #4291D8;
+    color: #4291D8 !important;
 }
 
 .header {
@@ -194,6 +200,7 @@ ul.dropdown-menu{
     min-height: 70px;
     text-align: center;
     padding-top: 10px;
+    margin-top: 50px;
 }
 .footer>ul{
     display: inline-block;

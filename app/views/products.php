@@ -44,7 +44,7 @@
             <div class="col-md-3 title">
                 <h3>Categories</h3></div>
             <div class="col-md-9 title">
-                <h3>Products category</h3></div>
+                <h3>Products</h3></div>
         </div>
     </div>
     <div class="container-fluid">
@@ -58,23 +58,39 @@
                 </div>
             </div>
             <div class="col-md-9">
-                    <?php for ($i = 0; $i < count($categories); $i++) { //отображение категорий
+                <?php if (!empty($products)) {
+                    for ($i = 0; $i < count($products); $i++) {
                         if (($i + 3) % 3 == 0) { ?>
                             <div class="row">
                         <?php } ?>
                         <div class="col-md-4 pull-down">
-                            <a href="/catalog/showproducts/<?php echo $categories[$i]['url'] ?>">
-                                <img src="<?php echo $categories[$i]['image'] ?>"
-                                     title="<?php echo $categories[$i]['category'] ?>">
-                            </a>
-                            <div class="text-center bold"><a
-                                    href="/catalog/showproducts/<?php echo $categories[$i]['url'] ?>"><?php echo $categories[$i]['category'] ?></a>
+                            <div class="product_mini grey_border">
+                                <div class="product_img">
+                                    <img src="/content/images/<?php echo $products[$i]['preview'] ?>"
+                                         title="<?php echo $products[$i]['description'] ?>">
+                                </div>
+                                <div class="product_mini_desc">
+                                    <h4><a href="#"><?php echo $products[$i]['product'] ?></a></h4>
+                                    <p><?php echo $products[$i]['content'] ?></p>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default cart_button"
+                                                id="prod_price"><?php echo $products[$i]['price'] ?></button>
+                                        <button type="button" class="btn btn-default"><span
+                                                class="glyphicon glyphicon-shopping-cart"></span> Buy
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <?php if (($i + 4) % 3 == 0) { ?>
                             </div>
                         <?php }
-                }//отображение категорий ?>
+                    }
+                } else { ?>
+                    <h2>В выбранной категории нет товаров <i class="fa fa-frown-o"></i></h2>
+                <?php
+                    }
+                 ?>
 
 
             </div>

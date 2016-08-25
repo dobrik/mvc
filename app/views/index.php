@@ -1,55 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
     <?php include_once 'headers.php'?>
-</head>
-
-<body>
-<div class="container">
-    <div class="row header">
-        <!-- header -->
-        <div class="col-md-4 col-lg-4"><span class="logo1">Mimity </span><span>Online Shop</span>
-            <p>Lorem ipsum dolor sit amet.</p>
-        </div>
-
-        <div class="col-md-5 col-lg-5">
-            <div class="input-group top_inputs">
-                <input type="text" placeholder="Enter something to search" class="form-control top_inputs_font">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default btn_no_left_border"><span class="glyphicon glyphicon-search"></span>
-                    </button>
-                    </span>
-            </div>
-        </div>
-        <div class="col-md-3 col-lg-3">
-            <div class="btn-group top_inputs search">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-shopping-cart pull-left"></span>
-                    <span class="pull-left"> Shopping Cart: 2 item(s) </span>
-                    <span class="caret pull-right"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li>
-                        <a href="">
-                            <p>Penn State College T-Shirt</p>
-                            <span>x1 $528.96</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <p>Live Nation ACDC Gray T-Shirt</p>
-                            <span>x1 $428.96</span>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="">Total: $957.92</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- header -->
-</div>
 <!-- container -->
 <div class="container-fluid menu_line">
     <div class="col-md-offset-1">

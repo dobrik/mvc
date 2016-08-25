@@ -15,4 +15,9 @@ class Products
         $link->query("SELECT * FROM `categories`");
         return $link->fetch_all();
     }
+    public function getCategoryProducts($category){
+        $link = Db::getInstance();
+        $link->query("SELECT * FROM `products` JOIN `categories` ON `categories`.`id`=`products`.`category_id` WHERE `categories`.`url`='{$category}'");
+        return $link->fetch_all();
+    }
 }
