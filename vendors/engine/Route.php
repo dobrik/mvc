@@ -6,12 +6,18 @@ class Route
     {
         $Controller = 'Index';
         $Action = 'index';
+        $Params = [];
         $routes = explode('/', $_SERVER['REQUEST_URI']);
-        if (!empty($routes[1])) {
+        if (!empty($routes[1]) && stripos($routes[1], '?') === false) {
             $Controller = $routes[1];
         }
-        if (!empty($routes[2])) {
+        if (!empty($routes[2]) && stripos($routes[2], '?') === false) {
             $Action = $routes[2];
+        }
+        for($i = 3; $i < count($routes); $i++) {
+            if (!empty($routes[$i]) && stripos($routes[$i], '?') === false) {
+                $Params[] = $routes[$i];
+            }
         }
         $Controller = ucfirst(strtolower($Controller)) . 'Controller';
         $Action = strtolower($Action) . 'Action';
@@ -23,7 +29,7 @@ class Route
             self::error404();
         }
         if (method_exists($controller, $Action)) {
-            $controller->$Action();
+            $controller->$Action($Params);
         } else {
             self::error404();
         }

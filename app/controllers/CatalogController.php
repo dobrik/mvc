@@ -1,13 +1,12 @@
 <?php
 
-class IndexController extends Controller
+class CatalogController extends Controller
 {
     public function indexAction()
     {
         $products = new Products();
         $main = new Main();
-        $this->view->render('index', ['menu' => $main->getMenu(),
-            'popularProducts' => $products->getPopularProducts(),
+        $this->view->render('catalog', ['menu' => $main->getMenu(),
             'categories' => $products->getCategories(),
             'currpage' => $main->getCurrentController(),
             'slider' => $main->getSlider()]);

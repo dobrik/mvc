@@ -2,9 +2,17 @@
 
 class Products
 {
-    public function getProducts()
+    public function getPopularProducts()
     {
-        $products = ['Orange', 'apples', 'bananas'];
-        return $products;
+        $link = Db::getInstance();
+        $link->query("SELECT * FROM `products` ORDER BY visits DESC LIMIT 0, 10");
+
+        return $link->fetch_all();
+    }
+    public function getCategories()
+    {
+        $link = Db::getInstance();
+        $link->query("SELECT * FROM `categories`");
+        return $link->fetch_all();
     }
 }
