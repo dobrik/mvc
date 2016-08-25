@@ -20,4 +20,9 @@ class Products
         $link->query("SELECT * FROM `products` JOIN `categories` ON `categories`.`id`=`products`.`category_id` WHERE `categories`.`url`='{$category}'");
         return $link->fetch_all();
     }
+    public function getProduct($product){
+        $link = Db::getInstance();
+        $link->query("SELECT * FROM `products` WHERE link='{$product[0]}'");
+        return $link->fetch_all()[0];
+    }
 }

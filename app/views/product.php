@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include_once 'headers.php' ?>
+<?php include_once '/app/views/headers.php' ?>
 <!-- container -->
 <div class="container-fluid menu_line">
     <div class="col-md-offset-1">
@@ -22,7 +22,7 @@
     <div class="special_offer container-fluid">
 
         <?php if (!empty($slider)) { ?>
-            <div class="carousel slide" data-ride="carousel">
+            <div class="carousel slide" id="carousel_on_main" data-ride="carousel">
                 <div class="carousel-inner">
                     <?php
                     foreach ($slider as $num => $slide) { ?>
@@ -49,7 +49,7 @@
             <div class="col-md-3 title">
                 <h3>Categories</h3></div>
             <div class="col-md-9 title">
-                <h3>Search result</h3></div>
+                <h3>Featured products</h3></div>
         </div>
     </div>
     <div class="container-fluid">
@@ -57,35 +57,27 @@
             <div class="col-md-3 title">
                 <div class="btn-group-vertical">
                     <?php foreach ($categories as $category) { ?>
-                        <a href="/category/<?php echo $category['url'] ?>"
+                        <a href="/catalog/showproducts/<?php echo $category['url'] ?>"
                            class="btn btn-default"><?php echo $category['category'] ?></a>
                     <?php } ?>
                 </div>
             </div>
             <div class="col-md-9">
-            <?php var_dump($result) ?>
-                <?php if(!empty($result)){
-                    foreach ($result as $item) {?>
-                        <div class="row">
-                        <div class="col-md-5"><img class="img_search_result" src="<?php $item['preview'] ?>" alt=""></div>
-                        <div class="col-md-7">
-                            <table class="table table-responsive search-table">
-                                <tr><td>Name: <span class="pull-right">s</span></td></tr>
-                                <tr><td>Description: <span class="pull-right">s</span></td></tr>
-                                <tr><td>Price: <span class="pull-right">s</span></tr>
-                                <tr><td>Availability: <span class="pull-right">s</span></td></tr>
-                            </table>
-                        </div>
-                    </div>
-           <?php }
-                }else{?>
-                    <h3>Ничего не найдено <i class="fa fa-frown-o"></i></h3>
-                <?php } ?>
+                <div class="col-md-4">
+                    <img class="product-img" src="<?php echo $product['preview'] ?>" alt="">
+                </div>
+                <div class="col-md-8">
+                    <div>Name: <span><?php echo $product['product'] ?></span></div>
+                    <div>Description: <span><?php echo $product['description'] ?></span></div>
+                    <div>Full description: <span><?php echo $product['content'] ?></span></div>
+                    <div class="text-right">Available count: <span><?php echo $product['count'] ?></span></div>
+                    <div class="text-right">Price: <span><?php echo $product['price'] ?></span></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<?php include_once 'footer.php' ?>
+<?php include_once '/app/views/footer.php' ?>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="/assets/js/main.js"></script>

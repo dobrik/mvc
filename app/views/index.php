@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include_once 'headers.php' ?>
+<?php include_once '/app/views/headers.php' ?>
 <!-- container -->
 <div class="container-fluid menu_line">
     <div class="col-md-offset-1">
@@ -22,7 +22,7 @@
     <div class="special_offer container-fluid">
 
         <?php if (!empty($slider)) { ?>
-            <div class="carousel slide" data-ride="carousel">
+            <div class="carousel slide" id="carousel_on_main" data-ride="carousel">
                 <div class="carousel-inner">
                     <?php
                     foreach ($slider as $num => $slide) { ?>
@@ -94,7 +94,7 @@
         </div>
     </div>
 </div>
-<?php include_once 'footer.php' ?>
+<?php include_once '/app/views/footer.php' ?>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="/assets/js/main.js"></script>

@@ -207,8 +207,38 @@ ul.dropdown-menu{
     list-style-type: none;
 }
 .img_search_result{
-    max-width: 300px;
+    max-height: 170px;
+    max-width: 250px;
 }
 .search-table span{
-    color:red;
+    color:green;
+}
+.search-product-block{
+    border-bottom: 1px solid #ddd;
+    margin-top: 10px;
+}
+#search{
+    z-index: 99;
+}
+#ajax_result{
+    position: absolute;
+    border: 1px solid #66afe9;
+    margin-top: -2px;
+    margin-bottom: -2px;
+    z-index: 55;
+    background-color: white;
+}
+.img_ajax{
+    max-width: 50px;
+    max-height: 50px;
+}
+.ajax_item{
+    margin: 5px 0px;
+}
+.ajax-description{
+    color: #000;
+}
+.product-img{
+    max-height: 300px;
+    max-width: 250px;
 }

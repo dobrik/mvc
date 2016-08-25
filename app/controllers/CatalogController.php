@@ -23,4 +23,13 @@ class CatalogController extends Controller
             'currpage' => $main->getCurrentController(),
             'products' => $products->getCategoryProducts($category)]);
     }
+
+    public function productAction($param)
+    {
+        $products = new Products();
+        $main = new Main();
+        $this->view->render('product', ['menu' => $main->getMenu(),
+            'categories' => $products->getCategories(),
+            'product' => $products->getProduct($param)]);
+    }
 }

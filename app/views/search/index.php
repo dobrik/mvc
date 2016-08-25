@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <?php include_once '/app/views/headers.php' ?>
 <!-- container -->
 <div class="container-fluid menu_line">
@@ -19,9 +20,10 @@
 <!-- menu line -->
 <div class="container content">
     <div class="special_offer container-fluid">
+
         <?php if (!empty($slider)) { ?>
-            <div class="carousel slide" id="carousel_on_main" data-ride="carousel">
-                <div class="carousel-inner">
+            <div class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" id="carousel_on_main">
                     <?php
                     foreach ($slider as $num => $slide) { ?>
                         <div class="item <? echo ($num == 0) ? 'active' : '' ?>">
@@ -40,13 +42,14 @@
                 </a>
             </div>
         <?php } ?>
+
     </div>
     <div class="container-fluid">
         <div class="row menu_and_products">
             <div class="col-md-3 title">
                 <h3>Categories</h3></div>
             <div class="col-md-9 title">
-                <h3>Products</h3></div>
+                <h3>Search result</h3></div>
         </div>
     </div>
     <div class="container-fluid">
@@ -60,43 +63,23 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <?php if (!empty($products)) {
-                    for ($i = 0; $i < count($products); $i++) {
-                        if (($i + 3) % 3 == 0) { ?>
-                            <div class="row">
-                        <?php } ?>
-                        <div class="col-md-4 pull-down">
-                            <a href="/catalog/product/<?php echo $products[$i]['link'] ?>">
-                                <div class="product_mini grey_border">
-                                    <div class="product_img">
-                                        <img src="<?php echo $products[$i]['preview'] ?>"
-                                             title="<?php echo $products[$i]['description'] ?>">
-                                    </div>
-                                    <div class="product_mini_desc">
-                                        <h4><?php echo $products[$i]['product'] ?></h4>
-                                        <p><?php echo $products[$i]['content'] ?></p>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default cart_button"
-                                                    id="prod_price"><?php echo $products[$i]['price'] ?></button>
-                                            <button type="button" class="btn btn-default"><span
-                                                    class="glyphicon glyphicon-shopping-cart"></span> Buy
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                <?php if(!empty($result)){
+                    foreach ($result as $item) {?>
+                        <div class="row col-md-offset-1 search-product-block">
+                        <div class="col-md-4"><img class="img_search_result" src="<?php echo $item['preview'] ?>"></div>
+                        <div class="col-md-5">
+                            <table class="table table-responsive search-table">
+                                <tr><td>Name: <span class="pull-right"><?php echo $item['product'] ?></span></td></tr>
+                                <tr><td>Description: <span class="pull-right"><?php echo $item['description'] ?></span></td></tr>
+                                <tr><td>Price: <span class="pull-right"><?php echo $item['price'] ?></span></tr>
+                                <tr><td>Availability: <span class="pull-right"><?php echo $item['stock'] ?></span></td></tr>
+                            </table>
                         </div>
-                        <?php if (($i + 4) % 3 == 0) { ?>
-                            </a>
-                            </div>
-                        <?php }
-                    }
-                } else { ?>
-                    <h2>В выбранной категории нет товаров <i class="fa fa-frown-o"></i></h2>
-                    <?php
-                }
-                ?>
-
-
+                    </div>
+           <?php }
+                }else{?>
+                    <h3>Ничего не найдено <i class="fa fa-frown-o"></i></h3>
+                <?php } ?>
             </div>
         </div>
     </div>
