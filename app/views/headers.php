@@ -24,8 +24,8 @@
     <div class="row header">
         <!-- header -->
         <div class="col-md-4 col-lg-4"><a class="logo-main" href="/"><span
-                    class="logo1">Mimity </span><span>Online Shop</span>
-                <p>Lorem ipsum dolor sit amet.</p></a>
+                    class="logo1">Mimity </span><span>Online Shop</span></a>
+                <p>Lorem ipsum dolor sit amet.</p>
         </div>
 
         <div class="col-md-5 col-lg-5">

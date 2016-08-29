@@ -33,20 +33,20 @@
 
             <div class="mb30"></div>
 
-            <form action="signin.html" method="post">
+            <form action="?" method="post">
                 <div class="input-group mb15">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="text" class="form-control" placeholder="Username">
+                    <input type="text" name="username" class="form-control" placeholder="Username">
                 </div><!-- input-group -->
                 <div class="input-group mb15">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
                 </div><!-- input-group -->
 
                 <div class="clearfix">
                     <div class="pull-left">
                         <div class="ckbox ckbox-primary mt10">
-                            <input type="checkbox" id="rememberMe" value="1">
+                            <input type="checkbox" id="rememberMe" name="remember" value="1">
                             <label for="rememberMe">Remember Me</label>
                         </div>
                     </div>

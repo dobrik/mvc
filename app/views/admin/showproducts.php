@@ -15,6 +15,7 @@
     <link href="/assets/css/select2.css" rel="stylesheet"/>
     <link href="/assets/css/colorpicker.css" rel="stylesheet"/>
     <link href="/assets/css/dropzone.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/assets/css/jquery.dataTables.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -207,8 +208,8 @@
                 <li><a href="/admin/dashboard"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
                 <li class="parent active"><a href=""><i class="fa fa-edit"></i> <span>Products</span></a>
                     <ul class="children">
-                        <li><a href="/admin/showproducts/">Show all</a></li>
-                        <li class="active"><a href="/admin/addproduct/">Add new</a></li>
+                        <li class="active"><a href="/admin/showproducts/">Show all</a></li>
+                        <li><a href="/admin/addproduct/">Add new</a></li>
                     </ul>
                 </li>
 
@@ -226,77 +227,17 @@
                         <ul class="breadcrumb">
                             <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
                             <li><a href="">Products</a></li>
-                            <li>Add product</li>
+                            <li>Show all products</li>
                         </ul>
-                        <h4>Add product</h4>
+                        <h4>Show all products</h4>
+                        <table id="products" class="display" width="100%"></table>
                     </div>
                 </div><!-- media -->
             </div><!-- pageheader -->
 
-            <div class="contentpanel">
-                <div id="add_result" data-result="<?php  echo $result['success'] ?>" class="alert" style="display: none;">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <strong id="alert-message" data-product="<?php  echo $result['product'] ?>"></strong>
-                </div>
-                <form action="/admin/addproduct" method="post" enctype="multipart/form-data">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="panel-btns" style="display: none;">
-                                <a href="" class="panel-minimize tooltips" data-toggle="tooltip" title=""
-                                   data-original-title="Minimize Panel"><i class="fa fa-minus"></i></a>
-                                <a href="" class="panel-close tooltips" data-toggle="tooltip" title=""
-                                   data-original-title="Close Panel"><i class="fa fa-times"></i></a>
-                            </div><!-- panel-btns -->
-                            <h4 class="panel-title">Add product</h4>
-                            <p>Select all info about your product here.</p>
-                        </div><!-- panel-heading -->
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="form-group col-md-4">
-                                    <input type="text" name="product" id="product" placeholder="Product name"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <input type="text" name="link" id="link" placeholder="link" readonly
-                                           class="form-control">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <input type="text" name="description" placeholder="Description"
-                                           class="form-control">
-                                </div>
-                            </div><!-- row -->
-                            <div class="row">
-                                <div class="form-group col-md-4">
-                                    <select name="category" class="form-control">
-                                        <option value="0">Select category</option>
-                                        <?php foreach ($categories as $category) { ?>
-                                            <option
-                                                value="<?php echo $category['id'] ?>"><?php echo $category['category'] ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <input type="text" name="price" placeholder="Price" class="form-control">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <input type="number" name="count" placeholder="Count" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-4">
-                                    <input type="file" name="image" class="form-control">
-                                    <label for="image">Select product image</label>
-                                </div>
-                            </div>
-                            <textarea class="form-control" name="content" rows="5" placeholder="Full description"></textarea>
-                        </div><!-- panel-body -->
-                        <div class="panel-footer">
-                            <button class="btn btn-primary">Add product</button>
-                        </div><!-- panel-footer -->
-                    </div><!-- panel -->
-                </form>
+            <div class="container">
 
-            </div><!-- contentpanel -->
+            </div>
         </div>
     </div><!-- mainwrapper -->
 </section>
@@ -321,31 +262,29 @@
 
 <script src="/assets/js/jquery.liTranslit.js"></script>
 <script src="/assets/js/admin.js"></script>
+<script src="/assets/js/jquery.dataTables.min.js"></script>
 
 <script>
     $().ready(function () {
-        var result = $('#add_result').data().result;
-        var product = $('#alert-message').data().product;
-        var alert;
-        if (result == 'yes') {
-            var message = 'Товар "' + product + '" успешно добавлен!';
-            alert = 'alert-success';
-        } else if (result == 'no') {
-            var message = 'Ошибка! Товар "' + product + '" не добавлен!';
-            alert = 'alert-danger';
-        }
-        if(message){
-            $('#alert-message').html(message);
-            $('#add_result').addClass(alert);
-            $('#add_result').fadeIn();
-            setTimeout(function(){
-                $('#add_result').fadeOut();
-            },5000)
-
-        }
-    });
+        $.ajax({
+            url: '/admin/ajax/getallproducts/',
+            dataType: 'json',
+            success: function(data){
+                $('#products').DataTable( {
+                    data: data,
+                    columns: [
+                        { title: "Product" },
+                        { title: "Link" },
+                        { title: "Description" },
+                        { title: "Price" },
+                        { title: "Count" },
+                        { title: "Category" }
+                    ]
+                } );
+            }
+        })
+    })
 </script>
-
 <script src="/assets/js/custom.js"></script>
 
 </body>

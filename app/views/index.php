@@ -69,12 +69,13 @@
                     <?php } ?>
                     <div class="col-md-4 pull-down">
                         <div class="product_mini grey_border">
+                            <a href="<?php echo $popularProducts[$i]['link'] ?>">
                             <div class="product_img">
                                 <img src="<?php echo $popularProducts[$i]['preview'] ?>"
                                      title="<?php echo $popularProducts[$i]['description'] ?>">
                             </div>
                             <div class="product_mini_desc">
-                                <h4><a href="#"><?php echo $popularProducts[$i]['product'] ?></a></h4>
+                                <h4><?php echo $popularProducts[$i]['product'] ?></h4>
                                 <p><?php echo $popularProducts[$i]['content'] ?></p>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default cart_button"
@@ -84,6 +85,7 @@
                                     </button>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                     <?php if (($i + 4) % 3 == 0) { ?>

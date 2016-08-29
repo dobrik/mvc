@@ -34,9 +34,7 @@ class Search
                     $result[$key] += ['stock' => 'no'];
                 }
             }
-            if (!empty($result)) {
-                return json_encode($result);
-            }
+            return json_encode($result);
         }
     }
 }

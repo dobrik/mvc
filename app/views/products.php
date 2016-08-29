@@ -66,7 +66,7 @@
                             <div class="row">
                         <?php } ?>
                         <div class="col-md-4 pull-down">
-                            <a href="/catalog/product/<?php echo $products[$i]['link'] ?>">
+                            <a href="<?php echo $products[$i]['link'] ?>">
                                 <div class="product_mini grey_border">
                                     <div class="product_img">
                                         <img src="<?php echo $products[$i]['preview'] ?>"

@@ -1,15 +1,16 @@
 <?php
 
-class Admin extends Users
+class Admin extends User
 {
-    public function is_admin()
+    public static function is_admin()
     {
-        if ($this->role == 'Admin') {
-            header('Location: /admin/dashboard/');
-        } else if ($this->logged) {
-            header('Location: /index/');
-        }else{
+        if (User::is_logged() != 'Admin') {
             header('Location: /admin/login/');
+            exit;
+        } else if(User::is_logged() == 'User'){
+            header('Location: /index/');
+            exit;
         }
     }
+
 }
